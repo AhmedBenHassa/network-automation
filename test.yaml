@@ -5,6 +5,7 @@
   vars:
     ansible_connection: network_cli
     ansible_network_os: cisco.ios.ios
+    ansible_ssh_common_args: '-o KexAlgorithms=+diffie-hellman-group14-sha1,diffie-hellman-group1-sha1 -o HostKeyAlgorithms=+ssh-rsa -o Ciphers=+aes256-cbc,aes192-cbc,aes128-cbc,3des-cbc'
   tasks:
     - name: Execute 'show version' command
       cisco.ios.ios_command:

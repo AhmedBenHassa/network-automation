@@ -1,0 +1,14 @@
+---
+- name: Cisco Switch Read-Only Test
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Execute 'show version' command
+      cisco.ios.ios_command:
+        commands:
+          - show version
+      register: switch_output
+
+    - name: Display the result on AWX Dashboard
+      debug:
+        msg: "{{ switch_output.stdout[0] }}"
